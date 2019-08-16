@@ -79,7 +79,7 @@ pipeline{
             }
             steps {
                 sh'''
-                zip zipFile: 'publish.zip', archive: false, dir: 'WebApi/bin/Debug/netcoreapp2.2/publish'
+                zip zipFile: 'publish.zip', archive: false, dir: 'SampleWebAPI/bin/Debug/netcoreapp2.2/publish'
                 archiveArtifacts artifacts: 'publish.zip', fingerprint: true
                 '''
             }
