@@ -73,7 +73,7 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Publish"}
             }
             steps {
-                sh'''
+                powershell'''
                 zip zipFile: 'publish.zip', archive: false, dir: 'HiHelloWebAPI/bin/Debug/netcoreapp2.2/publish'
                 archiveArtifacts artifacts: 'publish.zip', fingerprint: true
                 '''
