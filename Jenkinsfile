@@ -8,7 +8,7 @@ pipeline{
         )
         string(
             name: "SOLUTION_PATH",
-            defaultValue: "SampleWebAPI.sln",
+            defaultValue: "HiHelloWebAPI/HiHelloWebAPI.sln",
             description: "SOLUTION_PATH"
         )
         string(
@@ -18,13 +18,13 @@ pipeline{
         )
         string(
             name: "TEST_SOLUTION_PATH",
-            defaultValue: "WebApi.Test/WebApi.Test.csproj",
+            defaultValue: "HiHelloWebAPI.Tests/HiHelloWebAPI.Tests.csproj",
             description: "TEST SOLUTION PATH"
         )
         
         string(
             name: "PROJECT_PATH",
-            defaultValue: "WebApi/WebApi.csproj",
+            defaultValue: "HiHelloWebAPI/HiHelloWebAPI.csproj",
             description: "TEST SOLUTION PATH"
         )
         choice(
@@ -39,7 +39,7 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Build" || params.RELEASE_ENVIRONMENT == "Test" || params.RELEASE_ENVIRONMENT == "Publish"}
             }
             steps{
-                sh '''
+                powershell'''
                     echo '====================Build Project Start ================'
                     dotnet restore ${SOLUTION_PATH} --source https://api.nuget.org/v3/index.json
                     echo '=====================Build Project Completed============'
@@ -54,7 +54,7 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Test" || params.RELEASE_ENVIRONMENT == "Publish"}
             }
             steps{
-                sh '''
+                powershell'''
                     echo '====================Build Project Start ================'
                     dotnet test ${TEST_SOLUTION_PATH}
                     echo '=====================Build Project Completed============'
@@ -66,7 +66,7 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Publish"}
             }
             steps{
-                sh '''
+                powershell'''
                     echo '====================Build Project Start ================'
                     dotnet publish ${PROJECT_PATH}
                     echo '=====================Build Project Completed============'
@@ -79,7 +79,7 @@ pipeline{
             }
             steps {
                 sh'''
-                zip zipFile: 'publish.zip', archive: false, dir: 'SampleWebAPI/bin/Debug/netcoreapp2.2/publish'
+                zip zipFile: 'publish.zip', archive: false, dir: 'HiHelloWebAPI/bin/Debug/netcoreapp2.2/publish'
                 archiveArtifacts artifacts: 'publish.zip', fingerprint: true
                 '''
             }
