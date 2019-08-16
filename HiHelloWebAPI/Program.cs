@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using TodoApi;
 
-namespace SampleWebAPI
+namespace HiHelloWebAPI
 {
     public class Program
     {
