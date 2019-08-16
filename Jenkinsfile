@@ -12,11 +12,6 @@ pipeline{
             description: "SOLUTION_PATH"
         )
         string(
-            name: "DOTNETCORE_VERSION",
-            defaultValue: "2.2",
-            description: "Version"
-        )
-        string(
             name: "TEST_SOLUTION_PATH",
             defaultValue: "HiHelloWebAPI.Tests/HiHelloWebAPI.Tests.csproj",
             description: "TEST SOLUTION PATH"
