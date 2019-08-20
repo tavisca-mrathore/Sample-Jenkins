@@ -52,7 +52,7 @@ pipeline{
             steps{
                 bat '''
                     echo '====================Build Project Start ================'
-                    dotnet test %TEST_SOLUTION_PATH%
+                    dotnet test %SOLUTION_PATH%
                     echo '=====================Build Project Completed============'
                     dotnet C:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="97f6478d8f02dc2dce314b208ad338fd647e72a1"
                 '''
