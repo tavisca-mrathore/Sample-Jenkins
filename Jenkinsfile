@@ -65,7 +65,7 @@ pipeline{
             steps{
                 bat '''
                     echo '====================Build Project Start ================'
-                    docker login -u rmadhusudan359 -p E%q-8k6mZh6&n7d
+                    docker login -u='rmadhusudan359' -p='E%q-8k6mZh6&n7d'
 				    docker push tag dockerimage rmadhusudan359/demoapi
 				    docker push rmadhusudan359/demoapi
                     echo '=====================Build Project Completed============'
