@@ -40,7 +40,7 @@ pipeline{
                     dotnet restore %SOLUTION_PATH% --source https://api.nuget.org/v3/index.json
                     echo '=====================Build Project Completed============'
                     echo '====================Build Project Start ================'
-                    dotnet build %PROJECT_PATH%
+                    dotnet build %SOLUTION_PATH%
                     echo '=====================Build Project Completed============'
                 '''
             }
