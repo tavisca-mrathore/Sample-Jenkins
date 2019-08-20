@@ -34,7 +34,7 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Build" || params.RELEASE_ENVIRONMENT == "Test" || params.RELEASE_ENVIRONMENT == "Publish"}
             }
             steps{
-                powershell'''
+                bat script:'''
                     echo '====================Build Project Start ================'
                     dotnet restore ${SOLUTION_PATH} --source https://api.nuget.org/v3/index.json
                     echo '=====================Build Project Completed============'
@@ -49,7 +49,7 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Test" || params.RELEASE_ENVIRONMENT == "Publish"}
             }
             steps{
-                powershell'''
+                bat script:'''
                     echo '====================Build Project Start ================'
                     dotnet test ${TEST_SOLUTION_PATH}
                     echo '=====================Build Project Completed============'
@@ -61,7 +61,7 @@ pipeline{
                 expression{params.RELEASE_ENVIRONMENT == "Publish"}
             }
             steps{
-                powershell'''
+                bat script:'''
                     echo '====================Build Project Start ================'
                     dotnet publish ${PROJECT_PATH}
                     echo '=====================Build Project Completed============'
