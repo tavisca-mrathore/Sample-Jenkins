@@ -35,7 +35,7 @@ pipeline{
             }
             steps{
                 bat '''
-                    dotnet C:/sonar/SonarScanner.MSBuild.dll begin /k:"WebApi" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="97f6478d8f02dc2dce314b208ad338fd647e72a1"
+                    dotnet C:/sonar/SonarScanner.MSBuild.dll begin /k:"Test-API" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="b2fc72eedc5d4d2f81f201b1ebc28c85267b0242"
                     echo '====================Build Project Start ================'
                     dotnet restore %SOLUTION_PATH% --source https://api.nuget.org/v3/index.json
                     echo '=====================Build Project Completed============'
@@ -54,7 +54,7 @@ pipeline{
                     echo '====================Build Project Start ================'
                     dotnet test %SOLUTION_PATH%
                     echo '=====================Build Project Completed============'
-                    dotnet C:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="97f6478d8f02dc2dce314b208ad338fd647e72a1"
+                    dotnet C:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="b2fc72eedc5d4d2f81f201b1ebc28c85267b0242"
                 '''
             }
         }
