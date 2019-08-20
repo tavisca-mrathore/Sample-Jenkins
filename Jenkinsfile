@@ -40,7 +40,7 @@ pipeline{
                     dotnet restore %SOLUTION_PATH% --source https://api.nuget.org/v3/index.json
                     echo '=====================Build Project Completed============'
                     echo '====================Build Project Start ================'
-                    dotnet build %SOLUTION_PATH%
+                    docker build --tag=dockerimage .
                     echo '=====================Build Project Completed============'
                 '''
             }
@@ -65,12 +65,15 @@ pipeline{
             steps{
                 bat '''
                     echo '====================Build Project Start ================'
-                    dotnet publish %PROJECT_PATH%
+                    docker login -u rmadhusudan359 -p E%q-8k6mZh6&n7d
+				    docker push tag dockerimage rmadhusudan359/demoapi
+				    docker push rmadhusudan359/demoapi
                     echo '=====================Build Project Completed============'
                 '''
             }
         }
-        stage ('push artifact') {
+        /*stage ('push artifact') 
+        {
             when{
                 expression{params.RELEASE_ENVIRONMENT == "Publish"}
             }
@@ -80,7 +83,7 @@ pipeline{
                 archiveArtifacts artifacts: 'publish.zip', fingerprint: true
                 '''
             }
-        }
+        }*/
     }
     post{
         always{
